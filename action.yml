@@ -1,0 +1,13 @@
+name: "Daily Top Hackernews"
+description: "Received the top Hackernews in your pocket"
+branding:
+  icon: "book"
+  color: "orange"
+inputs:
+  news:
+    description: "number of top Hackernews stories the user wants to get"
+    required: false
+    default: 5
+runs:
+  using: "node12"
+  main: "index.js"
