@@ -12,6 +12,20 @@ if (size > 100) {
 const hackernewsURL = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
 
 async function run() {
+  const temp = [];
+  let msg = "";
+  const newsContent = obj => {
+    temp.push(obj);
+    msg += `[${temp.length}] ${obj.title} \n* link : ${obj.link} \n* details : ${obj.detail} \n\n`;
+
+    if (temp.length === size) {
+      try {
+        core.setOutput("Top 5 news on HackerNews", msg);
+      } catch (error) {
+        core.setFailed(error);
+      }
+    }
+  };
   axios
     .get(hackernewsURL)
     .then(function(response) {
@@ -21,7 +35,7 @@ async function run() {
             `https://hacker-news.firebaseio.com/v0/item/${rs}.json?print=pretty`
           )
           .then(rs_response => {
-            adding_content({
+            newsContent({
               title: rs_response.data.title,
               link: rs_response.data.url,
               detail: `https://news.ycombinator.com/item?id=${rs}`
@@ -30,7 +44,7 @@ async function run() {
       });
     })
     .catch(function(error) {
-      core.setFailed(error);
+      core.setFailed(error.message);
     });
 }
 
