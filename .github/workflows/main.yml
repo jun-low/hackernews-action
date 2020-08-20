@@ -17,5 +17,5 @@ jobs:
       id: hackernews
       uses: ./ # Uses an action in the root directory
       with:
-        run: echo "${{ steps.hackernews.outputs.temp }}"
+        run: echo "${{ steps.hackernews.outputs.msg }}"
         news: 5
