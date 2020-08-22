@@ -3,8 +3,6 @@ name: 🗞 Daily Top HackerNews
 on:
   schedule:
     - cron: '0 9 * * *' # Every day at 9am
-  push:
-    branches: [ master ]
 
 jobs:
   build:
