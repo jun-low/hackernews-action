@@ -22,7 +22,7 @@ async function run() {
       try {
         core.setOutput("Top 5 news on HackerNews", msg);
       } catch (error) {
-        core.setFailed(error);
+        core.setFailed(error.message);
       }
     }
   };
