@@ -1,5 +1,5 @@
 # 🗞 hackernews-action
-Get daily top 5 hacker news with GitHub action.
+Get top 5 daily hacker news with GitHub action.
 
 ## Usage
 Get top 5 hacker news everyday.
